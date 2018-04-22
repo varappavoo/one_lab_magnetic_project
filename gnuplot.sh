@@ -1,7 +1,7 @@
 #!/bin/bash
-awk '$3==-1 { print "" } 1' b_box.dat.csv > b_box.dat.csv.4d
-awk '(sqrt((sqrt($3*$3+$4*$4+$5*$5) - 0.35)^2) < 0.02) || !NF' b_box.dat.csv.4d > b_box.dat.csv.4d.sphere
-awk '{print $3,$4,$5,sqrt($9*$9+$10*$10+$11*$11)}' b_box.dat.csv.4d.sphere > b_box.dat.csv.4d.sphere.mag
+#awk '$3==-1 { print "" } 1' b_box.dat.csv > b_box.dat.csv.4d
+#awk '(sqrt((sqrt($3*$3+$4*$4+$5*$5) - 0.35)^2) < 0.02) || !NF' b_box.dat.csv.4d > b_box.dat.csv.4d.sphere
+#awk '{print $3,$4,$5,sqrt($9*$9+$10*$10+$11*$11)}' b_box.dat.csv.4d.sphere > b_box.dat.csv.4d.sphere.mag
 gnuplot -e ";set cbtics format '%g';;set xrange[-0.4:0.4];set yrange[-0.4:0.4];set zrange[-0.4:0.4];set parametric;set hidden3d offset 0;set xlabel 'x';set ylabel 'y';set zlabel 'z';set view equal xyz;set term wxt; set palette defined (-1 'yellow',0 'red', 1 'black');;set palette maxcolors 25 ; set pm3d interpolate 0,0;splot  'b_box.dat.csv.4d.sphere.mag' every 100 using 1:2:3:(column(4)>0.0?(column(4)):1/0) pt 7 ps .1  palette" -p
 
 
